@@ -10,10 +10,21 @@ FlashCard.prototype.showAnswer = function() {
 	document.getElementById("card-back").innerText = this.answer;
 };
 
-var semanticHtml = new FlashCard("semantic html", "agreed meaning of html elements, attributes, values");
-semanticHtml.showQuestion();
-semanticHtml.showAnswer();
+var cards = [
+	{
+		"question": "semantic html",
+		"answer": "agreed meaning of html elements, attributes, values"
+	},
+	{
+		"question": "optimize",
+		"answer": "file concat, minification, cdn, caching, sprites, minimize http calls"
+	}
+];
 
-var optimize = new FlashCard("optimize", "file concat, minification, cdn, caching, sprites, minimize http calls");
-optimize.showQuestion();
-optimize.showAnswer();
+var htmlArr = [];
+for (var i = 0; i < cards.length; i++) {
+	htmlArr.push(new FlashCard(cards[i].question, cards[i].answer));
+};
+
+console.log(htmlArr);
+htmlArr[1].showQuestion();
