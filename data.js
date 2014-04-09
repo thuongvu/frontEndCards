@@ -215,8 +215,51 @@ var cards = [
 		"question" : "Difference between function Person(){},  var person = Person(), and var person = new Person()",
 		"answer"   : "the first is a function declaration.  You are defining the Person function.  \n The second is a self executing anonymous function.  \n the third one uses the new keyword, meaning it 1. creates a new object. 2. sets the object's prototype to point to the constructor's prototype object.  3 assigns the this value to point to the new object.  4. executes the code inside the constructor function, eg. sets values and methods.  5. returns the new object.  "
 	},
-	
-
+	{
+		"topic"    : "JS",
+		"question" : "Call vs apply",
+		"answer"   : "Both set the context for the execution of a function.  The first argument they accept is what this will point to, and for apply, it accepts an array, and call requires arguments to be seperated by commas.  apply is better when you don't know the number of arguments to pass, or want to be flexible, eg. arguments object.  Array.prototype.slice.apply(this, arguments) vs fn.call(this, arg1, arg2, arg3)"
+	},
+	{
+		"topic"    : "JS",
+		"question" : "Function.prototype.bind",
+		"answer"   : "This method is used to call a function while setting an object this will be bound to when the function is invoked. \n it allows us to borrow methods easily, eg cars.showData =user.showData.bind(cars) // there is a showData method on the user, and we want to borrow it to use it with cars \n good for function currying, transforming a function with multiple aridity into a function with less aridity, aka presetting one or more parameters.  For example, greet(firstName, lastName) {return 'hello' + firstname + lastname }; \n  var greetGeorge = greet.bind('george', null);  \n greetGeorge('lucas') // 'hello george lucas' "
+	},
+	{
+		"topic"    : "JS",
+		"question" : "When would you use document.write()?",
+		"answer"   : "It writes a string of text to a document stream. \n Uses: google analytics, fallback for cdn's as  you can laod a script that way \n Cons: \n if you call it after the page is done laoding, it will overwrite the page \n doesn't work with xhtml documents"
+	},
+	{
+		"topic"    : "JS",
+		"question" : "Feature detection / feature inference / ua string",
+		"answer"   : "Feature detection = checks a feature for existence.  eg. if (window.XMLHTTPRequest) {} \n feature inference = infers if X exists, then Y must exist too because we are in a modern browser.  eg if geolocation exists, local storage exists. \n browser detection/ua string.  it gives us a string about browser + version, then we must map each browser to know what it supports"
+	},
+	{
+		"topic"    : "JS",
+		"question" : "ajax",
+		"answer"   : "- allows a client to make requests to the server without reloading the page.  it is a way to exchange data asnc between browser and server. \n 1. make an http request. var httpRequest = new XMLHttpRequest(); \n 2. when we receve a server response, invoke something else.  httpRequest.onreadystatechange = invokeAnotherFunction; \n 3. make a request. httpRequest.open('open', url, true) //third param = is this async? \n 4. set header if needed.  httpRequest.setRequestHeader('Content-Type', 'application/blahblah'); \n 5. handle server response.  if httpRequest.readyState === 5, do X. 0 = uninitialized. 1 = loading, 2 = loaded, 3 = interactive, 4 = complete"
+	},
+	{
+		"topic"    : "JS",
+		"question" : "difference between ajax and jsonp",
+		"answer"   : "jsonp allows a user to make cross domain requests \n does not make an ajax request.  it does a var newData = document.createElement('script'; \n newData.src='anotherdomian.com?callback='mycallback') \n then the jsonp response object is passed as an argument to the callback function \n script elements bypass cors limiation.  when you make a request to a server that is jsonp enabled, you pass a parameter to that server that can wrap up its response in a way our page can handle.  if the server expects a parameter called 'callback', then your request looks like http.xyz.com/sendmedata?callback=mycallback.  witout jsonp, the server might send back {foo: bar}, whereas with jsonp, the server wraps it up like: mycallback({foo: bar}).  now, when it is received on the page, it invokes the method we specified, mycallback.  mycallback = function(data) {console.log(data)}" 
+	},
+	{
+		"topic"    : "JS",
+		"question" : "Event bubbling vs capture",
+		"answer"   : "Event flow refers to the order in which events are received on the page.  With IE, an event starts at the most specific element, the deepest point, and then flows upward towards the least specific node of the document, firing at every node along the way.  Eg. element div, element body, element html, document.  \n With event capture, the least specific node receives the event first and the most specific node receives the event last.  It was made to intercept the event before it reached the intended target.  In modern browsers with DOM level 2, event caturing occurs first, providing the opportunity to intercept events if necessary.  Then, the actual ttarget receives the event, which is considered to be part of the bubbling phase, and in modern browsers, fire an e vent during the capturing phase on the event target, allowing for 2 opportunities to work with the event on the target  Event capturing has a lack of support in older browsers, so use event bubbling when possible.  The final phase is bubbling, which allows for a final response to the event.  "
+	},
+	{
+		"topic"    : "JS",
+		"question" : "Attributes vs property",
+		"answer"   : "Attributes are defined by html, and properties are defined by the DOM.  \n on html, attributes allow marku to have data associated with events, rendering, etc.  eg. document.body.getAttribute('className');  \n Properties are defiend on the DOM, and gives access to properties that elong on the element nodes.  \n These properties are similar to attributes, ,but are only accessible trough JS. \n A DOM element is an object, which has properties.  Seperately, it has a map of attributes defined on the elemtn.  Some of the element's properties get their initial values from attributes with same or similar names.  "
+	},
+	{
+		"topic"    : "JS",
+		"question" : "Extending built in JS objects, pros/cons",
+		"answer"   : "Pros: shimming, giving es3 something like Function.prototype.bind is a good example of an appropriate time.  "
+	},
 ];
 // {
 // 	"topic"    : "",
