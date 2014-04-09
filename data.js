@@ -258,7 +258,47 @@ var cards = [
 	{
 		"topic"    : "JS",
 		"question" : "Extending built in JS objects, pros/cons",
-		"answer"   : "Pros: shimming, giving es3 something like Function.prototype.bind is a good example of an appropriate time.  "
+		"answer"   : "Pros: shimming, giving es3 something like Function.prototype.bind is a good example of an appropriate time.  \n Cons: You don't know th environment that code will be in - you might overwrite some native method with one that is different, for someone else using a different library.  "
+	},
+	{
+		"topic"    : "JS",
+		"question" : "Document load vs document ready",
+		"answer"   : "Document ready executes when html + DOM is ready, good when you want to execute a script to get to usability asap \n document load executes when page & assets, images, are fully loaded"
+	},
+	{
+		"topic"    : "JS",
+		"question" : "== vs ===",
+		"answer"   : "== will comare for equality after doing type coercions, while === will compare for value and type . eg 0 == '0' // true while 0 === '0' // false\n === is called the strict equality operator"
+	},
+	{
+		"topic"    : "JS",
+		"question" : "Query string parameter from browser's window url",
+		"answer"   : "It's on window.location.search"
+	},
+	{
+		"topic"    : "JS",
+		"question" : "Same origin policy",
+		"answer"   : "It restricts how a document or script loaded from one origin can interact with a resource from another.  Origin = same protoocl, port, domain, not subdomain.  \n Cross-origin writes = allowed, in the forms of links, redirects, form submissions.  \n Embedding = allowed, js script, css, img, video, audio fonts.  \n reads = not allowed \n how to allow cross origin access: server-side, write the access-control-allow-origin header differently \n how to block cross origin access: csrf token"
+	},
+	{
+		"topic"    : "JS",
+		"question" : "[1,2,3,4,5].duplicate() // [1,2,3,4,5,1,2,3,4,5]",
+		"answer"   : "Array.prototype.duplicate = function() { return this.concat(this)}"
+	},
+	{
+		"topic"    : "JS",
+		"question" : "Arity of a function",
+		"answer"   : "The arity of a function specifies the number of arguments the function was defined to accept.  \n variable-arity / variadic function = a function that ccepts any number of arguments instead of a fixed number of arguments"
+	},
+	{
+		"topic"    : "JS",
+		"question" : "Use strict",
+		"answer"   : "value of this isnt automatically window object, but undefined \n silent errors now throw error \n 1 can't acidentally create global variables without declaring them with var \n 2 make assignments that would silently fail throw exceptions. eg. assigning var to NaN \n 3 attempts to delete undeletable properties throws error.  eg. you cant delete Object.prototype \n 4 requires all properties named in an object literal to be unique \n 5 function parameter names mustbe unique \n simplifies variable uses \n A prohibits with \n B eval does not introduce new variables into the surrounding scope \n C arguments become keywordish, you can't set stuff to arguments[0] and so on, and arguments.callee no longer works. "
+	},
+	{
+		"topic"    : "JS",
+		"question" : "DOM",
+		"answer"   : "The dom is a tree-like structure created by browsers so we can find html elements using JS. \n when browser receives html, it loads up the DOM, as it receives each element, it builds nodes inside the DOM.  \n Each browser has a slightly different DOM interface.  \n The DOM is ready to be manipulated on the DOM ready event, when all the html/DOM structure has loaded.  "
 	},
 ];
 // {
