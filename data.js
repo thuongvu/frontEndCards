@@ -165,6 +165,58 @@ var cards = [
 		"question" : "positioning",
 		"answer"   : "static - you can't offset properties like top, right, bottom, left.  static does not create coordinate system for child element.  think of it like blocks \n relative - allows you to offset properties.  it creates a coordinate system for child elements, relative to its parent.  if you move something out of flow, other things remain as if nothing had changed.  eg, 3 blocks, move middle box to right, top and bottom boxes will remain still.  think of it like magic blocks \n absolute - removed from normal flow.  it doesn't affect and is not affected by elements in flow.  it creates coordinate system and offset coordinates are in respect to each parent element.  can stretch element without defining width or height, but bound to parent element.  think of it like velcro \n fixed - shares rules of absolutely positioned element, except absolute positions with parent element, while fixed positions with the browser view.  it does not move. \n inherit - inherits from parent element"
 	},
+	{
+		"topic"    : "JS",
+		"question" : "Event delegation",
+		"answer"   : "Event delegation takes advantage of event bubbling to assign a single event handler to manage all elements of a partcular type.  For example, the click event, bubles up all the way to the document level.  Therefore it's possible to assign one onclick event handler for an entire page instead of one per each clickable element.  Then we check the event target to get the reference to the clicked node, then we can check the id property to determine the approciate action.  \n Pros \n the document object is immediately available and can have event ahndlers assigned right away, no need to wait for domcontentloaded or load events.  \n less event handlers = less time && less DOM references = less memory usage"
+	},
+	{
+		"topic"    : "JS",
+		"question" : "this",
+		"answer"   : "This holds the value of the object that invokes the function where this is used.  If not set, it is bound to the window object, or in strict mode, undefined. It is not assigned value until runtime.  \n You have to explicitly set this when \n 1. in a callback. \n 2. closure accessing otuer function's this, must set it outside. \n 3. when a method is assigned to a var. \n 4. when borrowing methods. \n use call/bind/apply so that you can set the value of this explicitly.  when you use the 'new' keyword, it is bound to the instance.  "
+	},
+	{
+		"topic"    : "JS",
+		"question" : "prototypal inheritance",
+		"answer"   : "We use Object.create(), pass in an object that we want to inherit from, as an argument.  \n eg. var anotherPerson = Object.create(person);  \n What Object.create() does is creates a temporary type, sets the temporary type's prototype to the object we pass in.  Therefore, on that prototype, it gets access to properties and methods of that object passed in.  Then, object.create returns an instance of the new temporary type we created.  "
+	},
+	{
+		"topic"    : "JS",
+		"question" : "Testing javascript",
+		"answer"   : "Avoid singletons, as they have state pollution between tests"
+	},
+	{
+		"topic"    : "JS",
+		"question" : "Why doesn't this work as an iife? function foo() {}();",
+		"answer"   : "When the interpreter encounters the function keyword, it treats it as a function declaration, and not a function expression.  If you wrap it in parentheses, like so, it would be treated as a function expression.  (function foo(){})"
+	},
+	{
+		"topic"    : "JS",
+		"question" : "What is the difference between null, undefined, and undeclared?  How do you check?",
+		"answer"   : "Null is an empty object pointer. \n undefined = when a variable is declared (eg, using var), the var is not initialized.  its value is set to undefined.  undefined is a derivative of null \n both undefined and undeclared have a typeof 'undefined' \n null and undefined are the same value, but different types. \n null == undefined // true \n null === undefined // false \n you should use null when an object is expected but not available, but never explicitly set value of var to undefined, it's already automatically assigned that"
+	},
+	{
+		"topic"    : "JS",
+		"question" : "Closures",
+		"answer"   : "Closures are functions that have access to  variables from another function's scope.  When a function is called, an execution context is created, and its scope chain is created.  The activation object for the function is initialized with values for arguments and any named arguments.  The outer function's activation object is the second object inthe scope chain.  This continues until the scope chain ends at the global execution context.  Its scope chain is built up by copying the objects in the function's scope property.  \n Properties \n It has access to the outer function's vars even after the outer function returns. \n It stores references to the outer function's variables, so it can change it.  \n Uses \n callbacks \n private vars, public methods \n usually \n a function's scope and vars are destroyed when a function has finished executing \n when a closure is returned from that function, its scope remains in memory until closure no longer exists \n CON: closures maintain extra scopes in memory, so overusing may increase memory consumption"
+	},
+	{
+		"topic"    : "JS",
+		"question" : "Use case for anonymous function",
+		"answer"   : "IIFE, in which a function is created and called immediately, executing the code within but not leaving a reference to the function.  thereby, variables inside function are destroyed, no pollution of global scope.  "
+	},
+	{
+		"topic"    : "JS",
+		"question" : "Host object vs native object",
+		"answer"   : "Native objects are ones specified by ES: arguments, array, boolean, date, error, function, json, math, number, object, egexp, string \n Host objects are any objects that are not native, but those that are in the context of the execution environment: window, document, location, history, xmlhttprequest, settimeout, getelementsbytagname, queryselectorall"
+	},
+	{
+		"topic"    : "JS",
+		"question" : "Difference between function Person(){},  var person = Person(), and var person = new Person()",
+		"answer"   : "the first is a function declaration.  You are defining the Person function.  \n The second is a self executing anonymous function.  \n the third one uses the new keyword, meaning it 1. creates a new object. 2. sets the object's prototype to point to the constructor's prototype object.  3 assigns the this value to point to the new object.  4. executes the code inside the constructor function, eg. sets values and methods.  5. returns the new object.  "
+	},
+	
+
 ];
 // {
 // 	"topic"    : "",

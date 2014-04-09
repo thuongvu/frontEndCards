@@ -28,12 +28,7 @@ function FlashCardApp() {
 			this.cardsArray[randomNumber].showAnswer();
 			this.cardsArray[randomNumber].showTopic();
 		}
-	}
-
-
-	var flashCardInstance = new FlashCard();
-	flashCardInstance.makeCardsPushIntoArr(cards);
-	flashCardInstance.showRandomCard();
+	};
 
 	var EventUtility = {
 		addHandler: function(element, type, handler) {
@@ -73,8 +68,11 @@ function FlashCardApp() {
 		}
 	};
 
+	// init
 	EventUtility.addHandler(document.getElementById("randomize"), "click", clickHandler);
-
+	var flashCardInstance = new FlashCard();
+	flashCardInstance.makeCardsPushIntoArr(cards);
+	flashCardInstance.showRandomCard();
 
 
 }
